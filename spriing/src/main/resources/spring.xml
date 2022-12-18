@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置spring Bean对象，默认单列模式 -->
+    <bean id="user" class="User">
+        <!-- 通过set方式注入属性 -->
+        <property name="id"  value="1"/>
+        <property name="username" value="chenjiajie" />
+        <property name="user" ref="user1"/>
+    </bean>
+
+    <!-- 配置spring Bean多列对象 -->
+    <bean id="user1" class="User" scope="prototype">
+        <!-- 通过构造函数方式注入属性 -->
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="username" value="chenjiajie"/>
+        <constructor-arg name="user">
+            <null/>
+        </constructor-arg>
+    </bean>
+
+</beans>
